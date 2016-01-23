@@ -7,12 +7,10 @@ import java.io.InputStreamReader;
 public class B012Main {
 
     public static void main(String[] args) throws Exception {
-        // 自分の得意な言語で
-        // Let's チャレンジ！！
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String line = br.readLine();
-        String[] readLineArray = line.split(" ");
-        int n = Integer.parseInt(readLineArray[0]);
+        String[] lineArray = line.split(" ");
+        int n = Integer.parseInt(lineArray[0]);
 
         for (int j = 0; j < n; j++) {
             String line2 = br.readLine();
