@@ -23,28 +23,28 @@ public class SuperCsvMain {
                 new Employee(1, "二郎"),
                 new Employee(0, "花子"));
 
-		// CSVファイルの形式を指定する
-		CsvPreference preference = new CsvPreference.Builder(
-				CsvPreference.EXCEL_PREFERENCE).useQuoteMode(
-				new AlwaysQuoteMode()).build();
+        // CSVファイルの形式を指定する
+        CsvPreference preference = new CsvPreference.Builder(
+                CsvPreference.EXCEL_PREFERENCE).useQuoteMode(
+                new AlwaysQuoteMode()).build();
 
-		try (Writer writer = new FileWriter("target/employees.csv");
-				CsvAnnotationBeanWriter<Employee> csvwriter = new CsvAnnotationBeanWriter<>(
-						Employee.class, writer, preference)) {
+        try (Writer writer = new FileWriter("./target/employees.csv");
+                CsvAnnotationBeanWriter<Employee> csvwriter = new CsvAnnotationBeanWriter<>(
+                        Employee.class, writer, preference)) {
 
-			// CSVファイルを生成する
-			csvwriter.writeHeader();
-			for (Employee employee : employees) {
-				csvwriter.write(employee);
-			}
-			csvwriter.flush();
-		}
+            // CSVファイルを生成する
+            csvwriter.writeHeader();
+            for (Employee employee : employees) {
+                csvwriter.write(employee);
+            }
+            csvwriter.flush();
+        }
 
-		// 生成したCSVファイルの内容を出力する
-		try (InputStream is = new FileInputStream("target/employees.csv");
-				Reader r = new InputStreamReader(is);
-				BufferedReader br = new BufferedReader(r)) {
-			br.lines().forEach(System.out::println);
-		}
-	}
+        // 生成したCSVファイルの内容を出力する
+        try (InputStream is = new FileInputStream("./target/employees.csv");
+                Reader r = new InputStreamReader(is);
+                BufferedReader br = new BufferedReader(r)) {
+            br.lines().forEach(System.out::println);
+        }
+    }
 }

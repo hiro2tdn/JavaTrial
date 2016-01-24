@@ -10,7 +10,8 @@ import net.lingala.zip4j.util.Zip4jConstants;
 
 public class ZipUtils {
 
-    public static void zip(String source, String destination, String password) throws Exception {
+    public static void zip(String source, String destination, String password)
+            throws Exception {
         ZipFile zipFile = new ZipFile(destination);
         zipFile.setFileNameCharset(Charsets.UTF_8.name());
 
@@ -33,7 +34,8 @@ public class ZipUtils {
         }
     }
 
-    public static void unzip(String source, String destination, String password) throws Exception {
+    public static void unzip(String source, String destination, String password)
+            throws Exception {
         ZipFile zipFile = new ZipFile(source);
         if (zipFile.isEncrypted()) {
             zipFile.setPassword(password);

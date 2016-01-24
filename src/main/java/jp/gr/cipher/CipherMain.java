@@ -28,6 +28,6 @@ public class CipherMain {
 		System.out.print("decrypted：");
 		for (byte b : decrypted) {
 			System.out.printf("%02X ", b);
-		}
-	}
+        }
+    }
 }
