@@ -1,4 +1,4 @@
-package jp.gr.cipher;
+package jp.gr.yamada;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -6,7 +6,34 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.io.Charsets;
 
-public class CipherUtils {
+public class CipherSample {
+
+	public static void main(String[] args) throws Exception {
+		String target = "テスト";
+
+		// 処理対象
+		byte[] original = target.getBytes(Charsets.UTF_8);
+		System.out.print("original ：");
+		for (byte b : original) {
+			System.out.printf("%02X ", b);
+		}
+		System.out.println();
+
+		// 暗号化処理
+		byte[] encrypted = CipherSample.encrypt(original);
+		System.out.print("encrypted：");
+		for (byte b : encrypted) {
+			System.out.printf("%02X ", b);
+		}
+		System.out.println();
+
+		// 復号処理
+		byte[] decrypted = CipherSample.decrypt(encrypted);
+		System.out.print("decrypted：");
+		for (byte b : decrypted) {
+			System.out.printf("%02X ", b);
+        }
+    }
 
     /** 鍵データ */
     private static byte[] key = "1234567890123456".getBytes(Charsets.UTF_8);

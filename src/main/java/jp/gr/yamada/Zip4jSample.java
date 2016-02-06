@@ -1,18 +1,31 @@
-package jp.gr.zip4j;
+package jp.gr.yamada;
 
 import java.io.File;
-
-import org.apache.commons.io.Charsets;
 
 import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.model.ZipParameters;
 import net.lingala.zip4j.util.Zip4jConstants;
 
-public class ZipUtils {
+import org.apache.commons.io.Charsets;
 
-    public static void zip(String source, String destination, String password)
+public class Zip4jSample {
+
+    public static void main(String[] args) throws Exception {
+        Zip4jSample.doZip("./src/main/resources/employees.csv",
+                "./target/employees.zip", "password");
+        Zip4jSample.doUnzip("./target/employees.zip", "./target", "password");
+    }
+
+    /**
+     * ZIPファイルを作成する
+     * @param source 処理対象
+     * @param dest ZIPファイルの格納パス
+     * @param password ZIPファイルのパスワード
+     * @throws Exception 例外
+     */
+    public static void doZip(String source, String dest, String password)
             throws Exception {
-        ZipFile zipFile = new ZipFile(destination);
+        ZipFile zipFile = new ZipFile(dest);
         zipFile.setFileNameCharset(Charsets.UTF_8.name());
 
         ZipParameters parameters = new ZipParameters();
@@ -34,12 +47,18 @@ public class ZipUtils {
         }
     }
 
-    public static void unzip(String source, String destination, String password)
+    /**
+     * ZIPファイルを解凍する
+     * @param source 処理対象
+     * @param dest 解凍ファイルの格納パス
+     * @param password ZIPファイルのパスワード
+     */
+    public static void doUnzip(String source, String dest, String password)
             throws Exception {
         ZipFile zipFile = new ZipFile(source);
         if (zipFile.isEncrypted()) {
             zipFile.setPassword(password);
         }
-        zipFile.extractAll(destination);
+        zipFile.extractAll(dest);
     }
 }
