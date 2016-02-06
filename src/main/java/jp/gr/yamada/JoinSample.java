@@ -1,9 +1,9 @@
-package jp.gr.join;
+package jp.gr.yamada;
 
 import java.util.Arrays;
 import java.util.StringJoiner;
 
-public class JoinMain {
+public class JoinSample {
 
     public static void main(String[] args) throws Exception {
         String[] array = new String[50000];
