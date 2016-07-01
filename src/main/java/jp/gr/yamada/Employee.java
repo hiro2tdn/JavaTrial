@@ -1,8 +1,15 @@
-package jp.gr.stream;
+package jp.gr.yamada;
 
+import org.supercsv.ext.annotation.CsvBean;
+import org.supercsv.ext.annotation.CsvColumn;
+
+@CsvBean(header = true)
 public class Employee {
 
+    @CsvColumn(position = 0, label = "ID")
     private int id;
+
+    @CsvColumn(position = 1, label = "名前")
     private String name;
 
     public Employee(int id, String name) {
