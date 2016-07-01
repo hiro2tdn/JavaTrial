@@ -1,15 +1,13 @@
-package jp.gr.stream;
+package jp.gr.yamada;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import jp.gr.beanpredicate.Employee;
-
-public class StreamMain {
+public class StreamSample {
 
     public static void main(String[] args) {
-        // リストを作成する
+        // 処理対象のリストを作成する
         List<Employee> employees = Arrays.asList(
             new Employee(0, "Adam"),
             new Employee(2, "Brian"),
@@ -34,6 +32,7 @@ public class StreamMain {
                     Comparator.comparing(Employee::getId)
                 .thenComparing(Employee::getName))
             .forEach(System.out::println);
+        System.out.println("");
     }
 
     /**
@@ -44,6 +43,7 @@ public class StreamMain {
         System.out.println("[Stream#filterの結果]");
         employees.stream().filter(s -> s.getId() == 0)
                 .forEach(System.out::println);
+        System.out.println("");
     }
 
     /**
@@ -53,5 +53,6 @@ public class StreamMain {
         // リストから重複を排除する(EmployeeはhashCode, equalsの実装が必要)
         System.out.println("[Stream#distinctの結果]");
         employees.stream().distinct().forEach(System.out::println);
+        System.out.println("");
     }
 }

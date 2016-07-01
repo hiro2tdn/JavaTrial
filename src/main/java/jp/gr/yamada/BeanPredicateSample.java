@@ -1,4 +1,4 @@
-package jp.gr.beanpredicate;
+package jp.gr.yamada;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.apache.commons.beanutils.BeanPredicate;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.PredicateUtils;
 
-public class BeanPredicateMain {
+public class BeanPredicateSample {
 
     public static void main(String[] args) {
         // 抽出対象のリストを作成する
@@ -35,6 +35,7 @@ public class BeanPredicateMain {
         System.out.println("[CollectionUtils#selectの結果]");
         CollectionUtils.select(employees, beanPredicate).stream()
                 .forEach(System.out::println);
+        System.out.println("");
     }
 
     /**
@@ -44,6 +45,7 @@ public class BeanPredicateMain {
             BeanPredicate beanPredicate) {
         System.out.println("[CollectionUtils#findの結果]");
         System.out.println(CollectionUtils.find(employees, beanPredicate));
+        System.out.println("");
     }
 
     /**
@@ -53,5 +55,6 @@ public class BeanPredicateMain {
             BeanPredicate beanPredicate) {
         System.out.println("[CollectionUtils#existsの結果]");
         System.out.println(CollectionUtils.exists(employees, beanPredicate));
+        System.out.println("");
     }
 }

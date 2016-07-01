@@ -19,7 +19,7 @@ public class TruncateSample {
     /**
      * 文字列を指定したバイト数に切り詰める
      * @param target 処理対象
-     * @param byteLength バイト数の指定
+     * @param byteLength 切り詰めるバイト数
      * @return 処理結果
      */
     public static String truncate(String target, int byteLength) {

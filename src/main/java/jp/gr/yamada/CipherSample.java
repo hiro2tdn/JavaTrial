@@ -9,13 +9,11 @@ import org.apache.commons.io.Charsets;
 public class CipherSample {
 
 	public static void main(String[] args) throws Exception {
-		String target = "テスト";
-
-		// 処理対象
-		byte[] original = target.getBytes(Charsets.UTF_8);
+		// 暗号化対象データ
+		byte[] original = "暗号化対象".getBytes(Charsets.UTF_8);
 		System.out.print("original ：");
 		for (byte b : original) {
-			System.out.printf("%02X ", b);
+			System.out.printf("%02x ", b);
 		}
 		System.out.println();
 
@@ -23,7 +21,7 @@ public class CipherSample {
 		byte[] encrypted = CipherSample.encrypt(original);
 		System.out.print("encrypted：");
 		for (byte b : encrypted) {
-			System.out.printf("%02X ", b);
+			System.out.printf("%02x ", b);
 		}
 		System.out.println();
 
@@ -31,14 +29,17 @@ public class CipherSample {
 		byte[] decrypted = CipherSample.decrypt(encrypted);
 		System.out.print("decrypted：");
 		for (byte b : decrypted) {
-			System.out.printf("%02X ", b);
+			System.out.printf("%02x ", b);
         }
+		System.out.println();
     }
 
     /** 鍵データ */
-    private static byte[] key = "1234567890123456".getBytes(Charsets.UTF_8);
+    private static byte[] KEY = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06,
+            0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f };
     /** 初期化ベクトル */
-    private static byte[] iv = "abcdefghijklmnop".getBytes(Charsets.UTF_8);
+    private static byte[] IV = { 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16,
+            0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f };
     /** 暗号化アルゴリズム */
     private static final String ALGORITHM = "AES";
     /** 暗号化モード */
@@ -48,31 +49,31 @@ public class CipherSample {
 
     /**
      * 暗号化処理
-     * @param bytes 暗号化するバイト配列
-     * @return 暗号化されたバイト配列
+     * @param bytes 処理対象
+     * @return 処理結果
      * @throws Exception 例外
      */
     public static byte[] encrypt(byte[] bytes) throws Exception {
         Cipher cipher = Cipher.getInstance(
                 String.join("/", ALGORITHM, MODE, PADDING));
         cipher.init(Cipher.ENCRYPT_MODE,
-                new SecretKeySpec(key, ALGORITHM),
-                new IvParameterSpec(iv));
+                new SecretKeySpec(KEY, ALGORITHM),
+                new IvParameterSpec(IV));
         return cipher.doFinal(bytes);
     }
 
     /**
      * 復号処理
-     * @param bytes 復号するバイト配列
-     * @return 復号されたバイト配列
+     * @param bytes 処理対象
+     * @return 処理結果
      * @throws Exception 例外
      */
     public static byte[] decrypt(byte[] bytes) throws Exception {
         Cipher cipher = Cipher.getInstance(
                 String.join("/", ALGORITHM, MODE, PADDING));
         cipher.init(Cipher.DECRYPT_MODE,
-                new SecretKeySpec(key, ALGORITHM),
-                new IvParameterSpec(iv));
+                new SecretKeySpec(KEY, ALGORITHM),
+                new IvParameterSpec(IV));
         return cipher.doFinal(bytes);
     }
 }

@@ -1,4 +1,4 @@
-package jp.gr.supercsv;
+package jp.gr.yamada;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -14,10 +14,10 @@ import org.supercsv.ext.io.CsvAnnotationBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 import org.supercsv.quote.AlwaysQuoteMode;
 
-public class SuperCsvMain {
+public class SuperCsvSample {
 
 	public static void main(String[] args) throws Exception {
-        // CSV出力するリストを作成する
+        // CSVファイルに出力するリストを作成する
         List<Employee> employees = Arrays.asList(
                 new Employee(0, "太郎"),
                 new Employee(1, "二郎"),
