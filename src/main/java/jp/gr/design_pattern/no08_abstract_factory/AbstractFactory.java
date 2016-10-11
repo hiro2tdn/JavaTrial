@@ -1,9 +1,9 @@
 package jp.gr.design_pattern.no08_abstract_factory;
 
-public abstract class Factory {
-    public static Factory createFactory(String className) throws Exception {
+public abstract class AbstractFactory {
+    public static AbstractFactory createFactory(String className) throws Exception {
         Class<?> c = Class.forName(className);
-        Factory ret = (Factory) c.newInstance();
+        AbstractFactory ret = (AbstractFactory) c.newInstance();
         return ret;
     }
 

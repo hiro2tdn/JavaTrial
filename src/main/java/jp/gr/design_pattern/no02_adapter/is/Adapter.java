@@ -1,5 +1,11 @@
 package jp.gr.design_pattern.no02_adapter.is;
 
-public interface Adapter {
-    public void execute(String name);
+import jp.gr.design_pattern.no02_adapter.Adaptee;
+
+public class Adapter extends Adaptee implements Target {
+    @Override
+    public void requiredMethod() {
+        System.out.println("Adapter:requiredMethod");
+        oldMethod();
+    }
 }

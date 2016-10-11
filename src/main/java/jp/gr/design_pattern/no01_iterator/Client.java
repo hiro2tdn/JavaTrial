@@ -3,9 +3,12 @@ package jp.gr.design_pattern.no01_iterator;
 import java.util.Iterator;
 
 /**
- * 並んだ物を順番に処理する
+ * <pre>
+ * 振る舞いに関するパターン
+ * コンテナオブジェクトの要素を列挙する手段を独立させることによって、コンテナの内部仕様に依存しない反復子を提供する
+ * </pre>
  */
-public class Main {
+public class Client {
     public static void main(String[] args) {
         ConcreteAggregate aggregate = new ConcreteAggregate();
         aggregate.add("A");

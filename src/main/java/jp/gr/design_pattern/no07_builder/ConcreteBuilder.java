@@ -1,21 +1,20 @@
 package jp.gr.design_pattern.no07_builder;
 
 public class ConcreteBuilder implements Builder {
-    private StringBuffer sb = new StringBuffer();
+    private Product product = new Product();
 
-    public void execute1(String name) {
-        sb.append(name + " -> ConcreteBuilder:execute1" + System.getProperty("line.separator"));
+    @Override
+    public void buildPart1() {
+        product.setBase("ConcreteBuilder:buildPart1");
     }
 
-    public void execute2(String name) {
-        sb.append(name + " -> ConcreteBuilder:execute2" + System.getProperty("line.separator"));
+    @Override
+    public void buildPart2() {
+        product.setWall("ConcreteBuilder:buildPart2");
     }
 
-    public void execute3(String name) {
-        sb.append(name + " -> ConcreteBuilder:execute3" + System.getProperty("line.separator"));
-    }
-
-    public Object getResult() {
-        return sb.toString();
+    @Override
+    public Product getResult() {
+        return product;
     }
 }
