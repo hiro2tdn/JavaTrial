@@ -1,11 +1,11 @@
 package jp.gr.design_pattern.no07_builder;
 
+import jp.gr.design_pattern.Product;
+
 public interface Builder {
-    public void execute1(String name);
+    public void buildPart1();
 
-    public void execute2(String name);
+    public void buildPart2();
 
-    public void execute3(String name);
-
-    public Object getResult();
+    public Product getResult();
 }
