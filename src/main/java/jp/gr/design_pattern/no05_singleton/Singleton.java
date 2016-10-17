@@ -12,7 +12,7 @@ public class Singleton {
     }
 
     public void execute() {
-        System.out.println("Singleton:execute:" + count++);
+        System.out.println("Singleton#execute:" + count++);
     }
 
 }

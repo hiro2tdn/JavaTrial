@@ -1,5 +1,7 @@
 package jp.gr.design_pattern.no07_builder;
 
+import jp.gr.design_pattern.Product;
+
 public class Director {
     private Builder builder;
 

@@ -11,7 +11,6 @@ public class Adapter implements Target {
 
     @Override
     public void requiredMethod() {
-        System.out.println("Adapter:requiredMethod");
         adaptee.oldMethod();
     }
 }

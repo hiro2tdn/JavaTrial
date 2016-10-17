@@ -1,5 +1,7 @@
 package jp.gr.design_pattern.no08_abstract_factory;
 
+import jp.gr.design_pattern.Product;
+
 /**
  * <pre>
  * 生成に関するパターン
@@ -7,12 +9,9 @@ package jp.gr.design_pattern.no08_abstract_factory;
  * </pre>
  */
 public class Client {
-    public static void main(String[] args) throws Exception {
-        AbstractFactory factory = AbstractFactory.createFactory(ConcreteFactory.class.getName());
-        Product1 product1 = factory.createProduct1();
-        product1.execute();
-        Product2 product2 = factory.createProduct2();
-        product2.execute();
+    public static void main(String[] args) {
+        AbstractFactory factory = AbstractFactory.createFactory(1);
+        Product product = factory.createProduct();
+        product.execute();
     }
-
 }

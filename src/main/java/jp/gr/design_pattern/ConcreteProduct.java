@@ -1,6 +1,6 @@
-package jp.gr.design_pattern.no07_builder;
+package jp.gr.design_pattern;
 
-public class Product {
+public class ConcreteProduct extends Product {
     private String base;
     private String wall;
 
@@ -13,8 +13,6 @@ public class Product {
     }
 
     public void execute() {
-        System.out.println(base);
-        System.out.println(wall);
-        System.out.println("Product:execute");
+        System.out.println("Product:execute(" + base + "," + wall + ")");
     }
 }
