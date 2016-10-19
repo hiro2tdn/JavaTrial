@@ -9,7 +9,7 @@ package jp.gr.design_pattern.no06_prototype;
  */
 public class Client {
     public static void main(String[] args) throws CloneNotSupportedException {
-        Prototype prototype = new ConcretePrototype();
+        Prototype prototype = new PrototypeImpl();
         prototype.execute();
         Prototype copy = prototype.clone();
         copy.execute();

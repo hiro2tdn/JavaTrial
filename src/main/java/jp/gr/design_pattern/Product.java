@@ -1,9 +1,9 @@
 package jp.gr.design_pattern;
 
-public abstract class Product {
-    public abstract void setBase(String base);
+public interface Product {
+    public void setBase(String base);
 
-    public abstract void setWall(String wall);
+    public void setWall(String wall);
 
-    public abstract void execute();
+    public void execute();
 }

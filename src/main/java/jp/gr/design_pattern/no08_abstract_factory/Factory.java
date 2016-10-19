@@ -2,10 +2,10 @@ package jp.gr.design_pattern.no08_abstract_factory;
 
 import jp.gr.design_pattern.Product;
 
-public abstract class AbstractFactory {
-    public static AbstractFactory createFactory(int id) {
+public abstract class Factory {
+    public static Factory createFactory(int id) {
         if (id == 1) {
-            AbstractFactory factory = new ConcreteFactory();
+            Factory factory = new FactoryImpl();
             return factory;
         } else {
             return null;

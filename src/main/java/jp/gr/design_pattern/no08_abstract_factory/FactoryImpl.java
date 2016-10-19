@@ -1,12 +1,12 @@
 package jp.gr.design_pattern.no08_abstract_factory;
 
-import jp.gr.design_pattern.ConcreteProduct;
+import jp.gr.design_pattern.ProductImpl;
 import jp.gr.design_pattern.Product;
 
-public class ConcreteFactory extends AbstractFactory {
+public class FactoryImpl extends Factory {
     @Override
     public Product createProduct() {
-        Product product = new ConcreteProduct();
+        Product product = new ProductImpl();
         product.setBase("base");
         product.setWall("wall");
         return product;

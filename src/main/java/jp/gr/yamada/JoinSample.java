@@ -5,7 +5,6 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class JoinSample {
-
     public static void main(String[] args) throws Exception {
         String[] array = new String[100000];
         Arrays.fill(array, "@");
@@ -29,8 +28,7 @@ public class JoinSample {
             str = str + s + delimiter;
         }
         long end = System.nanoTime();
-        System.out.println(String.format("%-20s:%5dms", "PlusOperator",
-                (end - start) / 1000000));
+        System.out.println(String.format("%-20s:%5dms", "PlusOperator", (end - start) / 1000000));
     }
 
     /**
@@ -44,8 +42,7 @@ public class JoinSample {
             sb.append(delimiter);
         }
         long end = System.nanoTime();
-        System.out.println(String.format("%-20s:%5dms", "StringBuilder",
-                (end - start) / 1000000));
+        System.out.println(String.format("%-20s:%5dms", "StringBuilder", (end - start) / 1000000));
     }
 
     /**
@@ -59,8 +56,7 @@ public class JoinSample {
             sb.append(delimiter);
         }
         long end = System.nanoTime();
-        System.out.println(String.format("%-20s:%5dms", "StringBuffer",
-                (end - start) / 1000000));
+        System.out.println(String.format("%-20s:%5dms", "StringBuffer", (end - start) / 1000000));
     }
 
     /**
@@ -73,8 +69,7 @@ public class JoinSample {
             sj.add(s);
         }
         long end = System.nanoTime();
-        System.out.println(String.format("%-20s:%5dms", "StringJoiner",
-                (end - start) / 1000000));
+        System.out.println(String.format("%-20s:%5dms", "StringJoiner", (end - start) / 1000000));
     }
 
     /**
@@ -84,8 +79,7 @@ public class JoinSample {
         long start = System.nanoTime();
         String.join(delimiter, array);
         long end = System.nanoTime();
-        System.out.println(String.format("%-20s:%5dms", "String#join",
-                (end - start) / 1000000));
+        System.out.println(String.format("%-20s:%5dms", "String#join", (end - start) / 1000000));
     }
 
     /**
@@ -95,8 +89,6 @@ public class JoinSample {
         long start = System.nanoTime();
         Arrays.stream(array).collect(Collectors.joining(delimiter));
         long end = System.nanoTime();
-        System.out.println(String.format("%-20s:%5dms", "Collectors#joining",
-                (end - start) / 1000000));
+        System.out.println(String.format("%-20s:%5dms", "Collectors#joining", (end - start) / 1000000));
     }
-
 }

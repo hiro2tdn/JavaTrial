@@ -9,7 +9,7 @@ package jp.gr.design_pattern.no04_factory_method;
  */
 public class Client {
     public static void main(String[] args) {
-        Creator creator = new ConcreteCreator();
+        Creator creator = new CreatorImpl();
         creator.anOperation();
     }
 }

@@ -9,7 +9,6 @@ import java.nio.charset.CodingErrorAction;
 import org.apache.commons.io.Charsets;
 
 public class TruncateSample {
-
     public static void main(String[] args) throws Exception {
         System.out.println(TruncateSample.truncate("あいうえお", 14));
         System.out.println(TruncateSample.truncate("あいうえお", 15));

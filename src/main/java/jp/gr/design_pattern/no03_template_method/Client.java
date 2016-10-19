@@ -8,7 +8,7 @@ package jp.gr.design_pattern.no03_template_method;
  */
 public class Client {
     public static void main(String[] args) {
-        AbstractClass template = new ConcreteClass();
+        Template template = new TemplateImpl();
         template.templateMethod();
     }
 }

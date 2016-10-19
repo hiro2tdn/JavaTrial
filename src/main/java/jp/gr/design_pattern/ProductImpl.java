@@ -1,6 +1,6 @@
 package jp.gr.design_pattern;
 
-public class ConcreteProduct extends Product {
+public class ProductImpl implements Product {
     private String base;
     private String wall;
 

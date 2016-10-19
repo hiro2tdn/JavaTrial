@@ -1,6 +1,6 @@
 package jp.gr.design_pattern.no06_prototype;
 
-public class ConcretePrototype extends Prototype {
+public class PrototypeImpl extends Prototype {
     private int count = 0;
 
     @Override

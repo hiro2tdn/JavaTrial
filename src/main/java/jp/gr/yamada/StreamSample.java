@@ -1,58 +1,26 @@
 package jp.gr.yamada;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class StreamSample {
-
     public static void main(String[] args) {
         // 処理対象のリストを作成する
-        List<Employee> employees = Arrays.asList(
-            new Employee(0, "Adam"),
-            new Employee(2, "Brian"),
-            new Employee(1, "Cliff"),
-            new Employee(2, "Brian"),
-            new Employee(0, "Abel"));
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(0, "Adam"));
+        employees.add(new Employee(2, "Brian"));
+        employees.add(new Employee(1, "Cliff"));
+        employees.add(new Employee(2, "Brian"));
+        employees.add(new Employee(0, "Abel"));
 
-        // 動作確認
-        sorted(employees);
-        filter(employees);
-        distinct(employees);
-    }
+        System.out.println("[id=0の項目を取得する(全て)]");
+        employees.stream().filter(s -> s.getId() == 0).forEach(System.out::println);
 
-    /**
-     * Stream#sortedの場合
-     */
-    private static void sorted(List<Employee> employees) {
-        // リストをid, nameの昇順にソートする
-        System.out.println("[Stream#sortedの結果]");
-        employees.stream()
-            .sorted(
-                    Comparator.comparing(Employee::getId)
-                .thenComparing(Employee::getName))
-            .forEach(System.out::println);
-        System.out.println("");
-    }
+        System.out.println("[id, nameの昇順にソートする]");
+        employees.stream().sorted(Comparator.comparing(Employee::getId).thenComparing(Employee::getName)).forEach(System.out::println);
 
-    /**
-     * Stream#filterの場合
-     */
-    private static void filter(List<Employee> employees) {
-        // リストからidが0のEmployeeを抽出する
-        System.out.println("[Stream#filterの結果]");
-        employees.stream().filter(s -> s.getId() == 0)
-                .forEach(System.out::println);
-        System.out.println("");
-    }
-
-    /**
-     * Stream#distinctの場合
-     */
-    private static void distinct(List<Employee> employees) {
-        // リストから重複を排除する(EmployeeはhashCode, equalsの実装が必要)
-        System.out.println("[Stream#distinctの結果]");
+        System.out.println("[重複を排除する]");
         employees.stream().distinct().forEach(System.out::println);
-        System.out.println("");
     }
 }

@@ -1,6 +1,6 @@
 package jp.gr.design_pattern.no03_template_method;
 
-public abstract class AbstractClass {
+public abstract class Template {
     public void templateMethod() {
         method1();
         method2();

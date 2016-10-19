@@ -10,7 +10,7 @@ import jp.gr.design_pattern.Product;
  */
 public class Client {
     public static void main(String[] args) {
-        AbstractFactory factory = AbstractFactory.createFactory(1);
+        Factory factory = Factory.createFactory(1);
         Product product = factory.createProduct();
         product.execute();
     }

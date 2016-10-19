@@ -10,7 +10,7 @@ import jp.gr.design_pattern.Product;
  */
 public class Client {
     public static void main(String[] args) {
-        Builder builder = new ConcreteBuilder();
+        Builder builder = new BuilderImpl();
         Director director = new Director(builder);
         Product product = director.construct();
         product.execute();
