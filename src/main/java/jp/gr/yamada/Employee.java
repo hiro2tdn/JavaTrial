@@ -5,7 +5,6 @@ import org.supercsv.ext.annotation.CsvColumn;
 
 @CsvBean(header = true)
 public class Employee {
-
     @CsvColumn(position = 0, label = "ID")
     private int id;
 

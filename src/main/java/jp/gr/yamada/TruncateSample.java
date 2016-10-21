@@ -22,7 +22,6 @@ public class TruncateSample {
      * @return 処理結果
      */
     public static String truncate(String target, int byteLength) {
-
         Charset charset = Charsets.UTF_8;
         byte[] bytes = target.getBytes(charset);
 

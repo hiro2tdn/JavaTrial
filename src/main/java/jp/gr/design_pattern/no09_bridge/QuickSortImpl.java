@@ -1,58 +1,58 @@
 package jp.gr.design_pattern.no09_bridge;
 
+/**
+ * <pre>
+ * クイックソート
+ * n個のデータをソートする際の最良計算量および平均計算量はO(nlogn)である。
+ * 他のソート法と比べて、一般的に最も高速だといわれているが対象のデータの並びやデータの数によっては必ずしも速いわけではなく、
+ * 最悪計算時間はO(n2)である。
+ * </pre>
+ */
 public class QuickSortImpl extends SortImpl {
-    private int[] numbers;
-    private int number;
-
     public void sort(int[] values) {
         // check for empty or null array
         if (values == null || values.length == 0) {
             return;
         }
-        this.numbers = values;
-        number = values.length;
-        quicksort(0, number - 1);
+        quicksort(values, 0, values.length - 1);
     }
 
-    private void quicksort(int low, int high) {
-        int i = low, j = high;
-        // Get the pivot element from the middle of the list
-        int pivot = numbers[low + (high - low) / 2];
-
-        // Divide into two lists
-        while (i <= j) {
-            // If the current value from the left list is smaller then the pivot
-            // element then get the next element from the left list
-            while (numbers[i] < pivot) {
-                i++;
-            }
-            // If the current value from the right list is larger then the pivot
-            // element then get the next element from the right list
-            while (numbers[j] > pivot) {
-                j--;
-            }
-
-            // If we have found a values in the left list which is larger then
-            // the pivot element and if we have found a value in the right list
-            // which is smaller then the pivot element then we exchange the
-            // values.
-            // As we are done we can increase i and j
-            if (i <= j) {
-                exchange(i, j);
-                i++;
-                j--;
-            }
+    private void quicksort(int[] values, int left, int right) {
+        if (right <= left) {
+            return;
         }
-        // Recursion
-        if (low < j)
-            quicksort(low, j);
-        if (i < high)
-            quicksort(i, high);
-    }
 
-    private void exchange(int i, int j) {
-        int temp = numbers[i];
-        numbers[i] = numbers[j];
-        numbers[j] = temp;
+        int l = left;
+        int r = right;
+        // 1.ピボットとして配列の中央の値を選択する
+        int pivot = values[l + (r - l) / 2];
+
+        while (true) {
+            // 2.左から順に値を調べ、ピボット以上のものを見つけたらその位置をlとする
+            while (values[l] < pivot) {
+                l++;
+            }
+
+            // 3.右から順に値を調べ、ピボット以下のものを見つけたらその位置をrとする。
+            while (pivot < values[r]) {
+                r--;
+            }
+
+            // 4.lがrより左にあれば、その2つの位置を入れ替え、2に戻る。
+            // ただし、次の2での探索はlの一つ右、次の3での探索はrの一つ左から行う。
+            if (r <= l) {
+                break;
+            }
+
+            int tmp = values[l];
+            values[l] = values[r];
+            values[r] = tmp;
+            l++;
+            r--;
+        }
+
+        // 5.配列を左右2つの領域に分け、それぞれに対して再帰的に1からの手順を行う。
+        quicksort(values, left, l - 1);
+        quicksort(values, r + 1, right);
     }
 }
