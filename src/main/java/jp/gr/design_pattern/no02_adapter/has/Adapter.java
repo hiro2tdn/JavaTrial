@@ -1,16 +1,17 @@
 package jp.gr.design_pattern.no02_adapter.has;
 
-import jp.gr.design_pattern.no02_adapter.Adaptee;
-
-public class Adapter implements Target {
+public class Adapter extends Target {
     private Adaptee adaptee;
 
     public Adapter() {
         this.adaptee = new Adaptee();
     }
 
-    @Override
-    public void requiredMethod() {
-        adaptee.oldMethod();
+    public void targetMethod1() {
+        adaptee.method1();
+    }
+
+    public void targetMethod2() {
+        adaptee.method2();
     }
 }

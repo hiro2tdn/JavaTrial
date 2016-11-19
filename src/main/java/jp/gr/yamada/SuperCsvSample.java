@@ -28,7 +28,7 @@ public class SuperCsvSample {
         CsvPreference preference = new CsvPreference.Builder(CsvPreference.EXCEL_PREFERENCE).useQuoteMode(new AlwaysQuoteMode()).build();
 
         // CSVファイルを生成する
-        try (Writer writer = new FileWriter("./target/employees.csv");
+        try (Writer writer = new FileWriter("./tmp/employees.csv");
                 CsvAnnotationBeanWriter<Employee> csvwriter = new CsvAnnotationBeanWriter<>(Employee.class, writer, preference)) {
             csvwriter.writeHeader();
             for (Employee employee : employees) {
@@ -38,7 +38,7 @@ public class SuperCsvSample {
         }
 
         // 生成したCSVファイルの内容を出力する
-        try (InputStream is = new FileInputStream("./target/employees.csv");
+        try (InputStream is = new FileInputStream("./tmp/employees.csv");
                 Reader r = new InputStreamReader(is);
                 BufferedReader br = new BufferedReader(r)) {
             br.lines().forEach(System.out::println);

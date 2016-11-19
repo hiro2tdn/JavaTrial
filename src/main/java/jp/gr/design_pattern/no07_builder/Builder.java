@@ -1,11 +1,9 @@
 package jp.gr.design_pattern.no07_builder;
 
-import jp.gr.design_pattern.Product;
+public abstract class Builder {
+    public abstract void part1(String str);
 
-public interface Builder {
-    public void buildPart1();
+    public abstract void part2(String str);
 
-    public void buildPart2();
-
-    public Product getResult();
+    public abstract Object getResult();
 }

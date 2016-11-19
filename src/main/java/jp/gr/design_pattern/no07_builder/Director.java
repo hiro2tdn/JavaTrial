@@ -1,7 +1,5 @@
 package jp.gr.design_pattern.no07_builder;
 
-import jp.gr.design_pattern.Product;
-
 public class Director {
     private Builder builder;
 
@@ -9,9 +7,9 @@ public class Director {
         this.builder = builder;
     }
 
-    public Product construct() {
-        builder.buildPart1();
-        builder.buildPart2();
+    public Object construct() {
+        builder.part1("工程１");
+        builder.part2("工程２");
         return builder.getResult();
     }
 }

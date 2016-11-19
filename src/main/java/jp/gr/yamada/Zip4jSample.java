@@ -11,7 +11,7 @@ import org.apache.commons.io.Charsets;
 public class Zip4jSample {
     public static void main(String[] args) throws Exception {
         String source = "./src/main/resources/employees.csv";
-        String zipFilePath = "./target/employees.zip";
+        String zipFilePath = "./tmp/employees.zip";
         String password = "password";
 
         Zip4jSample.doZip(source, zipFilePath, password);

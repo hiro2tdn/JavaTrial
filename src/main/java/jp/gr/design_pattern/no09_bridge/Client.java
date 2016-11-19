@@ -1,39 +1,27 @@
 package jp.gr.design_pattern.no09_bridge;
 
-import java.util.Random;
-
 /**
  * <pre>
  * 構造に関するパターン
- * 「橋渡し」のクラスを用意することによって、クラスを複数の方向に拡張させることを目的とする
+ * あるクラスにおける機能拡張と実装を分離し、それらを独立して管理します。
+ * 1. Abstraction(抽象化)
+ * 機能追加の継承関係の最上位クラスです。「Implementor」を内部に保持し、「Implementor」のメソッドを使用した基本的な機能を提供します。
+ * 2. RefinedAbstraction(改善した抽象化)
+ * 「Abstraction」を機能追加したクラスです。「Abstraction」とは、機能追加の継承関係にあります。
+ * 3. Implementor(実装者)
+ * 機能実装の継承関係の最上位クラスです。「Abstraction」が使用するメソッドのインタフェースを定義します。
+ * 4. ConcreteImplementor(具体的な実装者)
+ * 「Implementor」が定めたインタフェースを実装します。
+ * 5. Client(利用者)
+ * 「Bridge」パターンを適用したクラスを利用し処理します。
  * </pre>
  */
 public class Client {
     public static void main(String[] args) {
-        // ランダム配列をバブルソートする
-        int[] data = makeRandomArrays(10);
-        Sorter bubbleSorter = new Sorter(new BubbleSortImpl());
-        bubbleSorter.sort(data);
-        for (int d : data) {
-            System.out.printf("%x ", d);
-        }
-        System.out.println();
-
-        // ランダム配列をクイックソートする
-        data = makeRandomArrays(10);
-        Sorter quickSorter = new Sorter(new QuickSortImpl());
-        quickSorter.sort(data);
-        for (int d : data) {
-            System.out.printf("%x ", d);
-        }
-        System.out.println();
-    }
-
-    private static int[] makeRandomArrays(int length) {
-        int[] data = new int[length];
-        for (int i = 0; i < length; i++) {
-            data[i] = new Random().nextInt(10);
-        }
-        return data;
+        Abstraction abstraction = new Abstraction(new ConcreteImplementor());
+        RefinedAbstraction refinedAbstraction = new RefinedAbstraction(new ConcreteImplementor());
+        abstraction.abstractionMethod();
+        refinedAbstraction.abstractionMethod();
+        refinedAbstraction.refinedMethod();
     }
 }
